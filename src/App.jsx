@@ -13,6 +13,7 @@ function App() { // ← this is a React component
   const [filter, setFilter] = useState('all')
   const [sort, setSort] = useState('default')
   const [cartOpen, setCartOpen] = useState(false)
+  const [search, setSearch] = useState('')
   const products = [
     {id: 1, name: "Winter Coat", price: 30, image: "images/jacket.jpg", description: " A great all year round jacket"},
     {id: 2, name: "Summer Dress", price: 60, image: "images/dress.jpg", description: " A beautiful red dress"},
@@ -53,7 +54,11 @@ function App() { // ← this is a React component
     if (filter === 'over50') return product.price > 50
   })
 
-  const sortedProducts = [...filteredProducts].sort(function(a, b) {
+  const searchedProducts = filteredProducts.filter(function(product) {
+    return product.name.toLowerCase().includes(search.toLocaleLowerCase())
+  })
+
+  const sortedProducts = [...searchedProducts].sort(function(a, b) {
     if ( sort === 'low') return a.price -b.price
     if ( sort === 'high') return b.price -a.price
     return 0
@@ -68,8 +73,22 @@ function App() { // ← this is a React component
       cart = {cart}
       cartOpen = {cartOpen}
       setCartOpen = {setCartOpen}
+      search={search}
+      setSearch={setSearch}
       />
       <Hero />
+
+      {/* remove div search since it's now in the header */}
+
+      {/* <div className='search'>
+      <input 
+      type='text'
+      placeholder='Search products...'
+      value={search}
+      onChange={(e) => setSearch(e.target.value)}
+      />
+      </div> */}
+
       <div className='filters'>
         <button 
         className={filter === 'all' ? 'active' : ''}

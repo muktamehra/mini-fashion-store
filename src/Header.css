@@ -40,3 +40,61 @@ header span {
 .cart-dropdown span {
   color: #333333;
 }
+
+.cart-wrapper {
+  position: relative;
+}
+
+.cart-icon {
+  cursor: pointer;
+  color: #F5E642;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.cart-dropdown {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background-color: #ffffff;
+  border: 1px solid #eeeeee;
+  border-radius: 8px;
+  padding: 16px;
+  width: 280px;
+  z-index: 100;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+.cart-dropdown h3 {
+  color: #333333;
+  font-size: 16px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #eeeeee;
+  padding-bottom: 8px;
+}
+
+.cart-total {
+  margin-top: 12px;
+  text-align: right;
+  color: #333333;
+  font-size: 16px;
+}
+
+header input {
+  padding: 8px 15px;
+  border: 2px solid #555;
+  border-radius: 25px;
+  font-size: 1rem;
+  outline: none;
+  width: 220px;
+  background-color: #555;
+  color: #ffffff;
+}
+
+header input::placeholder {
+  color: #cccccc;
+}
+
+header input:focus {
+  border-color: #F5E642;
+}

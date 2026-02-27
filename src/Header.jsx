@@ -1,6 +1,6 @@
 import './Header.css'
 
-function Header({ cartTotal, total, cart, cartOpen, setCartOpen }) {
+function Header({ cartTotal, total, cart, cartOpen, setCartOpen, search, setSearch}) {
     return (
         <header>
         <h1>My Shop</h1>
@@ -9,6 +9,12 @@ function Header({ cartTotal, total, cart, cartOpen, setCartOpen }) {
             <a href="#">About</a>
             <a href="#">Contact</a>
         </nav>
+        <input 
+        type="text" 
+        placeholder='Search products...'
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        />
         <div className='cart-wrapper'>
             <span 
             className='cart-icon'
