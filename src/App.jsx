@@ -5,10 +5,12 @@ import ProductCard from './ProductCard'
 import Footer from './Footer'
 import './Hero.css'
 import './ProductCard.css'
+import './App.css'
 
 function App() { // ← this is a React component
   const [cart, setCart] = useState([])
   const [cartTotal, setCartTotal] = useState(0)
+  const [filter, setFilter] = useState('all')
   const products = [
     {id: 1, name: "Winter Coat", price: 30, image: "images/jacket.jpg", description: " A great all year round jacket"},
     {id: 2, name: "Summer Dress", price: 60, image: "images/dress.jpg", description: " A beautiful red dress"},
@@ -42,13 +44,25 @@ function App() { // ← this is a React component
   // return sum + item.price * item.quantity
   // }, 0)
 
+  //  cart total
+  const filteredProducts = products.filter(function(product) {
+    if (filter === 'all') return true
+    if (filter === 'under50') return product.price < 50
+    if (filter === 'over50') return product.price > 50
+  })
+
 
   return (     //← everything inside here shows on the page
     <div>
       <Header cartTotal={cartTotal} total={total} />
       <Hero />
+      <div className='filters'>
+        <button onClick={() => setFilter('all')}>All</button>
+        <button onClick={() => setFilter('under50')}>Under $50</button>
+        <button onClick={() => setFilter('over50')}>Over $50</button>
+      </div>
       <div className="cards">
-        {products.map(function(product) {
+        {filteredProducts.map(function(product) {
           return (
             <ProductCard
             key={product.id}
