@@ -55,7 +55,7 @@ function App() { // ← this is a React component
   })
 
   const searchedProducts = filteredProducts.filter(function(product) {
-    return product.name.toLowerCase().includes(search.toLocaleLowerCase())
+    return product.name.toLowerCase().includes(search.toLowerCase())
   })
 
   const sortedProducts = [...searchedProducts].sort(function(a, b) {
@@ -77,17 +77,6 @@ function App() { // ← this is a React component
       setSearch={setSearch}
       />
       <Hero />
-
-      {/* remove div search since it's now in the header */}
-
-      {/* <div className='search'>
-      <input 
-      type='text'
-      placeholder='Search products...'
-      value={search}
-      onChange={(e) => setSearch(e.target.value)}
-      />
-      </div> */}
 
       <div className='filters'>
         <button 

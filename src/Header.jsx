@@ -25,7 +25,6 @@ function Header({ cartTotal, total, cart, cartOpen, setCartOpen, search, setSear
            {cartOpen && (
             <div className='cart-dropdown'>
                 <h3>Your Cart</h3>
-                {console.log('cart contents:', cart)}
                 {cart.length === 0 ? (
                     <p>Your cart is empty</p>
                 ) : (
