@@ -10,7 +10,7 @@
   color: #ffffff;
   border: none;
   padding: 10px 24px;
-  border-radius: 4px;
+  border-radius: 0;
   cursor: pointer;
   font-size: 14px;
 }
@@ -31,7 +31,7 @@
   color: #333333;
   border: 1px solid #333333;
   padding: 10px 24px;
-  border-radius: 4px;
+  border-radius: 0;
   cursor: pointer;
   font-size: 14px;
 }
@@ -42,7 +42,7 @@
 }
 
 .filters button.active {
-  background-color: #F5E642;
+  background-color: #c9c5be;
   color: #333333;
 }
 
@@ -58,7 +58,7 @@
 
 .cart-icon {
   cursor: pointer;
-  color: #F5E642;
+  color: #c9c5be;
   font-size: 16px;
   font-weight: bold;
 }
@@ -69,7 +69,7 @@
   right: 0;
   background-color: #ffffff;
   border: 1px solid #eeeeee;
-  border-radius: 8px;
+  border-radius: 0;
   padding: 16px;
   width: 280px;
   z-index: 100;

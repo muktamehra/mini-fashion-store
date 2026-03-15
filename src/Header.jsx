@@ -23,12 +23,15 @@ function Header({ cartTotal, total, cart, cartOpen, setCartOpen, search, setSear
             <a href="#">About</a>
             <a href="#">Contact</a>
         </nav>
-        <input 
-        type="text" 
-        placeholder='Search products...'
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-        />
+  <div className='search-wrapper'>
+  <input 
+    type="text" 
+    placeholder='Search'
+    value={search}
+    onChange={(e) => setSearch(e.target.value)}
+  />
+  <i className="fas fa-search"></i>
+</div>
         <div className='cart-wrapper' ref={cartRef}>
             <span 
             className='cart-icon'

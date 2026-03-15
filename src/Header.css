@@ -19,7 +19,7 @@ nav a {
 }
 
 nav a:hover {
-    color: #F5e642;
+    color: #c9c5be;
 }
 
 header span {
@@ -47,7 +47,7 @@ header span {
 
 .cart-icon {
   cursor: pointer;
-  color: #F5E642;
+  color: #c9c5be;
   font-size: 16px;
   font-weight: bold;
 }
@@ -82,12 +82,13 @@ header span {
 
 header input {
   padding: 8px 15px;
-  border: 2px solid #555;
-  border-radius: 25px;
+  border: none;
+  border-bottom: none;
+  border-radius: 0;
   font-size: 1rem;
   outline: none;
   width: 220px;
-  background-color: #555;
+  background-color: transparent;
   color: #ffffff;
 }
 
@@ -96,5 +97,36 @@ header input::placeholder {
 }
 
 header input:focus {
-  border-color: #F5E642;
+  border-color: #ffffff;
+}
+
+.search-wrapper {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #c9c5be;
+  width: 220px;
+}
+
+.search-wrapper input {
+  border: none;
+  background: transparent;
+  color: #ffffff;
+  font-size: 1rem;
+  outline: none;
+  width: 100%;
+  padding: 8px 0;
+}
+
+.search-wrapper input::placeholder {
+  color: #cccccc;
+}
+
+.search-wrapper .fa-search {
+  color: #c9c5be;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.search-wrapper:focus-within {
+  border-bottom-color: #ffffff;
 }
