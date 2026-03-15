@@ -2,38 +2,49 @@
   display: flex;
   gap: 12px;
   justify-content: center;
-  padding: 24px;
+  padding: 32px 24px 12px;
+  flex-wrap: wrap;
 }
 
 .filters button {
-  background-color: #333333;
-  color: #ffffff;
-  border: none;
+  background-color: #ffffff;
+  color: #333333;
+  border: 1px solid #333333;
   padding: 10px 24px;
-  border-radius: 0;
   cursor: pointer;
   font-size: 14px;
+  letter-spacing: 1px;
+  transition: background-color 0.3s, color 0.3s;
 }
 
+
 .filters button:hover {
-  background-color: #000000;
+  background-color: #333333;
+  color: #ffffff;
+}
+
+.filters button.active {
+  background-color: #333333;
+  color: #ffffff;
 }
 
 .sort {
   display: flex;
-  gap: 12px;
+  gap: 10px;
   justify-content: center;
-  padding: 0 24px 24px;
+  padding: 0 24px 32px;
+  flex-wrap: wrap;
 }
 
 .sort button {
   background-color: #ffffff;
   color: #333333;
-  border: 1px solid #333333;
-  padding: 10px 24px;
-  border-radius: 0;
+  border: 1px solid #cccccc;
+  padding: 8px 20px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 13px;
+  letter-spacing: 1px;
+  transition: all 0.3s;
 }
 
 .sort button:hover {

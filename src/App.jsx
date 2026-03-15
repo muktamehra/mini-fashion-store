@@ -5,6 +5,7 @@ import ProductCard from './ProductCard'
 import Footer from './Footer'
 import './Hero.css'
 import './ProductCard.css'
+import './App.css'
 
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
 
   const products = [
     // Dresses
-    { id: 1, name: "Floral Midi Dress", price: 65, category: "dresses", image: "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=600&q=80" },
+    { id: 1, name: "Floral Midi Dress", price: 65, category: "dresses", image: "https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=600&q=80" },
     { id: 2, name: "Black Evening Dress", price: 95, category: "dresses", image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=600&q=80" },
     { id: 3, name: "Summer Wrap Dress", price: 55, category: "dresses", image: "https://images.unsplash.com/photo-1612336307429-8a898d10e223?w=600&q=80" },
 
