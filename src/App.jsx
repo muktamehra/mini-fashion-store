@@ -37,15 +37,26 @@ function App() { // ← this is a React component
     }
   }
 
-  // add reduce here
+  function removeFromCart(name) {
+  const existingProduct = cart.find(function(item) {
+    return item.name === name
+  })
+  if (existingProduct.quantity === 1) {
+    setCart(cart.filter(function(item) {
+      return item.name !== name
+    }))
+  } else {
+    setCart(cart.map(function(item) {
+      if (item.name === name) {
+        return { ...item, quantity: item.quantity - 1 }
+      }
+      return item
+    }))
+  }
+}
+
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0)
 
-  // The above code can be written as this as well:
-  // const total = cart.reduce(function(sum, item) {
-  // return sum + item.price * item.quantity
-  // }, 0)
-
-  //  cart total
   const filteredProducts = products.filter(function(product) {
     if (filter === 'all') return true
     if (filter === 'under50') return product.price < 50
@@ -74,6 +85,7 @@ function App() { // ← this is a React component
       setCartOpen = {setCartOpen}
       search={search}
       setSearch={setSearch}
+      removeFromCart={removeFromCart}
       />
       <Hero />
 

@@ -1,6 +1,6 @@
 import './Header.css'
 
-function Header({ cartTotal, total, cart, cartOpen, setCartOpen, search, setSearch}) {
+function Header({ cartTotal, total, cart, cartOpen, setCartOpen, search, setSearch, removeFromCart }) {
     return (
         <header>
         <h1>My Shop</h1>
@@ -34,6 +34,7 @@ function Header({ cartTotal, total, cart, cartOpen, setCartOpen, search, setSear
                                 <span>{item.name}</span>
                                 <span>{item.quantity}</span>
                                 <span>{item.price * item.quantity}</span>
+                                <button onClick={() => removeFromCart(item.name)}>❌</button>
                             </div>
                         )
                     })
