@@ -14,7 +14,7 @@ function Header({ cartTotal, total, cart, cartOpen, setCartOpen, search, setSear
     return () => {
       document.removeEventListener('mousedown', handleClickOutside)
     }
-  }, [])
+  }, [setCartOpen])
 
   return (
     <header>
@@ -30,31 +30,32 @@ function Header({ cartTotal, total, cart, cartOpen, setCartOpen, search, setSear
           placeholder='Search'
           value={search}
           onChange={(e) => setSearch(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') e.target.blur()
+          }}
         />
+        {search && (
+          <span className='search-clear' onClick={() => setSearch('')}>✕</span>
+        )}
         <i className="fas fa-search"></i>
       </div>
       <div className='cart-wrapper' ref={cartRef}>
-        <span
-          className='cart-icon'
-          onClick={() => setCartOpen(!cartOpen)}>
+        <span className='cart-icon' onClick={() => setCartOpen(!cartOpen)}>
           🛒{cartTotal} - ${total}
         </span>
-
         {cartOpen && (
           <div className='cart-dropdown'>
             <h3>Your Cart</h3>
             {cart.length === 0 ? (
               <p>Your cart is empty</p>
             ) : (
-              cart.map(function(item, index) {
-                return (
-                  <div key={index} className='cart-item'>
-                    <span>{item.name}</span>
-                    <span>{item.quantity}</span>
-                    <span>${item.price * item.quantity}</span>
-                  </div>
-                )
-              })
+              cart.map((item, index) => (
+                <div key={index} className='cart-item'>
+                  <span>{item.name}</span>
+                  <span>{item.quantity}</span>
+                  <span>${item.price * item.quantity}</span>
+                </div>
+              ))
             )}
             <div className='cart-total'>
               <strong>Total: ${total}</strong>

@@ -146,3 +146,14 @@ header input:focus {
   border-bottom-color: #ffffff;
 }
 
+.search-clear {
+  color: #cccccc;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 0 6px;
+}
+
+.search-clear:hover {
+  color: #ffffff;
+}
+

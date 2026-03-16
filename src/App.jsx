@@ -3,10 +3,8 @@ import Header from './Header'
 import Hero from './Hero'
 import ProductCard from './ProductCard'
 import Footer from './Footer'
-import './Hero.css'
 import './ProductCard.css'
 import './App.css'
-
 
 function App() {
   const [cart, setCart] = useState([])
@@ -17,7 +15,7 @@ function App() {
 
   const products = [
     // Dresses
-    { id: 1, name: "Floral Midi Dress", price: 65, category: "dresses", image: "https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=600&q=80" },
+    { id: 1, name: "Floral Midi Dress", price: 65, category: "dresses", image: "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=600&q=80" },
     { id: 2, name: "Black Evening Dress", price: 95, category: "dresses", image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=600&q=80" },
     { id: 3, name: "Summer Wrap Dress", price: 55, category: "dresses", image: "https://images.unsplash.com/photo-1612336307429-8a898d10e223?w=600&q=80" },
 
@@ -42,53 +40,40 @@ function App() {
     { id: 15, name: "Linen Pants", price: 48, category: "pants", image: "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=600&q=80" },
   ]
 
-  function addToCart(name, price) {
-    const existingProduct = cart.find(function(item) {
-      return item.name === name
-    })
+  const addToCart = (name, price) => {
+    const existingProduct = cart.find((item) => item.name === name)
     if (existingProduct) {
-      setCart(cart.map(function(item) {
-        if (item.name === name) {
-          return { ...item, quantity: item.quantity + 1 }
-        }
-        return item
-      }))
+      setCart(cart.map((item) =>
+        item.name === name ? { ...item, quantity: item.quantity + 1 } : item
+      ))
     } else {
-      setCart([...cart, { name: name, price: price, quantity: 1 }])
+      setCart([...cart, { name, price, quantity: 1 }])
     }
   }
 
-  function removeFromCart(name) {
-    const existingProduct = cart.find(function(item) {
-      return item.name === name
-    })
+  const removeFromCart = (name) => {
+    const existingProduct = cart.find((item) => item.name === name)
     if (existingProduct.quantity === 1) {
-      setCart(cart.filter(function(item) {
-        return item.name !== name
-      }))
+      setCart(cart.filter((item) => item.name !== name))
     } else {
-      setCart(cart.map(function(item) {
-        if (item.name === name) {
-          return { ...item, quantity: item.quantity - 1 }
-        }
-        return item
-      }))
+      setCart(cart.map((item) =>
+        item.name === name ? { ...item, quantity: item.quantity - 1 } : item
+      ))
     }
   }
 
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0)
 
-  const filteredProducts = products.filter(function(product) {
-    if (filter === 'all') return true
-    return product.category === filter
-  })
+  const filteredProducts = products.filter((product) =>
+    filter === 'all' ? true : product.category === filter
+  )
 
-  const searchedProducts = filteredProducts.filter(function(product) {
+  const searchedProducts = filteredProducts.filter((product) => {
     const query = search.toLowerCase()
     return product.name.toLowerCase().includes(query) || product.category.toLowerCase().includes(query)
   })
 
-  const sortedProducts = [...searchedProducts].sort(function(a, b) {
+  const sortedProducts = [...searchedProducts].sort((a, b) => {
     if (sort === 'low') return a.price - b.price
     if (sort === 'high') return b.price - a.price
     return 0
@@ -111,13 +96,13 @@ function App() {
       <Hero />
 
       <div className='filters'>
-        <button className={filter === 'all' ? 'active' : ''} onClick={() => setFilter('all')}>All</button>
-        <button className={filter === 'dresses' ? 'active' : ''} onClick={() => setFilter('dresses')}>Dresses</button>
-        <button className={filter === 'tops' ? 'active' : ''} onClick={() => setFilter('tops')}>Tops</button>
-        <button className={filter === 'jackets' ? 'active' : ''} onClick={() => setFilter('jackets')}>Jackets & Coats</button>
-        <button className={filter === 'bags' ? 'active' : ''} onClick={() => setFilter('bags')}>Bags & Purses</button>
-        <button className={filter === 'pants' ? 'active' : ''} onClick={() => setFilter('pants')}>Pants & Jeans</button>
-      </div>
+  <button className={filter === 'all' ? 'active' : ''} onClick={() => { setFilter('all'); setSearch('') }}>All</button>
+  <button className={filter === 'dresses' ? 'active' : ''} onClick={() => { setFilter('dresses'); setSearch('') }}>Dresses</button>
+  <button className={filter === 'tops' ? 'active' : ''} onClick={() => { setFilter('tops'); setSearch('') }}>Tops</button>
+  <button className={filter === 'jackets' ? 'active' : ''} onClick={() => { setFilter('jackets'); setSearch('') }}>Jackets & Coats</button>
+  <button className={filter === 'bags' ? 'active' : ''} onClick={() => { setFilter('bags'); setSearch('') }}>Bags & Purses</button>
+  <button className={filter === 'pants' ? 'active' : ''} onClick={() => { setFilter('pants'); setSearch('') }}>Pants & Jeans</button>
+</div>
 
       <div className='sort'>
         <button className={sort === 'default' ? 'active' : ''} onClick={() => setSort('default')}>Default</button>
@@ -126,17 +111,15 @@ function App() {
       </div>
 
       <div className="cards">
-        {sortedProducts.map(function(product) {
-          return (
-            <ProductCard
-              key={product.id}
-              name={product.name}
-              price={product.price}
-              image={product.image}
-              addToCart={addToCart}
-            />
-          )
-        })}
+        {sortedProducts.map((product) => (
+          <ProductCard
+            key={product.id}
+            name={product.name}
+            price={product.price}
+            image={product.image}
+            addToCart={addToCart}
+          />
+        ))}
       </div>
       <Footer />
     </div>
