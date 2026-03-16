@@ -1,7 +1,7 @@
 import './Header.css'
 import { useEffect, useRef } from 'react'
 
-function Header({ cartTotal, total, cart, cartOpen, setCartOpen, search, setSearch, removeFromCart }) {
+function Header({ cartTotal, total, cart, cartOpen, setCartOpen, search, setSearch, setActiveSearch, removeFromCart }) {
   const cartRef = useRef(null)
 
   useEffect(() => {
@@ -31,11 +31,11 @@ function Header({ cartTotal, total, cart, cartOpen, setCartOpen, search, setSear
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           onKeyDown={(e) => {
-            if (e.key === 'Enter') e.target.blur()
+            if (e.key === 'Enter') setActiveSearch(e.target.value)
           }}
         />
         {search && (
-          <span className='search-clear' onClick={() => setSearch('')}>✕</span>
+          <span className='search-clear' onClick={() => { setSearch(''); setActiveSearch('') }}>✕</span>
         )}
         <i className="fas fa-search"></i>
       </div>
@@ -54,6 +54,7 @@ function Header({ cartTotal, total, cart, cartOpen, setCartOpen, search, setSear
                   <span>{item.name}</span>
                   <span>{item.quantity}</span>
                   <span>${item.price * item.quantity}</span>
+                  <button onClick={() => removeFromCart(item.name)}>❌</button>
                 </div>
               ))
             )}

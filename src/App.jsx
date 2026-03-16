@@ -13,6 +13,7 @@ function App() {
   const [sort, setSort] = useState('default')
   const [cartOpen, setCartOpen] = useState(false)
   const [search, setSearch] = useState('')
+  const [activeSearch, setActiveSearch] = useState('')
 
   const addToCart = (name, price) => {
     const existingProduct = cart.find((item) => item.name === name)
@@ -43,7 +44,7 @@ function App() {
   )
 
   const searchedProducts = filteredProducts.filter((product) => {
-    const query = search.toLowerCase()
+    const query = activeSearch.toLowerCase()
     return product.name.toLowerCase().includes(query) || product.category.toLowerCase().includes(query)
   })
 
@@ -65,17 +66,18 @@ function App() {
         setCartOpen={setCartOpen}
         search={search}
         setSearch={setSearch}
+        setActiveSearch={setActiveSearch}
         removeFromCart={removeFromCart}
       />
       <Hero />
 
       <div className='filters'>
-  <button className={filter === 'all' ? 'active' : ''} onClick={() => { setFilter('all'); setSearch('') }}>All</button>
-  <button className={filter === 'dresses' ? 'active' : ''} onClick={() => { setFilter('dresses'); setSearch('') }}>Dresses</button>
-  <button className={filter === 'tops' ? 'active' : ''} onClick={() => { setFilter('tops'); setSearch('') }}>Tops</button>
-  <button className={filter === 'jackets' ? 'active' : ''} onClick={() => { setFilter('jackets'); setSearch('') }}>Jackets & Coats</button>
-  <button className={filter === 'bags' ? 'active' : ''} onClick={() => { setFilter('bags'); setSearch('') }}>Bags & Purses</button>
-  <button className={filter === 'pants' ? 'active' : ''} onClick={() => { setFilter('pants'); setSearch('') }}>Pants & Jeans</button>
+  <button className={filter === 'all' ? 'active' : ''} onClick={() => { setFilter('all'); setSearch(''); setActiveSearch('')  }}>All</button>
+  <button className={filter === 'dresses' ? 'active' : ''} onClick={() => { setFilter('dresses'); setSearch(''); setActiveSearch('')  }}>Dresses</button>
+  <button className={filter === 'tops' ? 'active' : ''} onClick={() => { setFilter('tops'); setSearch(''); setActiveSearch('')  }}>Tops</button>
+  <button className={filter === 'jackets' ? 'active' : ''} onClick={() => { setFilter('jackets'); setSearch(''); setActiveSearch('')  }}>Jackets & Coats</button>
+  <button className={filter === 'bags' ? 'active' : ''} onClick={() => { setFilter('bags'); setSearch(''); setActiveSearch('')  }}>Bags & Purses</button>
+  <button className={filter === 'pants' ? 'active' : ''} onClick={() => { setFilter('pants'); setSearch(''); setActiveSearch('')  }}>Pants & Jeans</button>
 </div>
 
       <div className='sort'>
