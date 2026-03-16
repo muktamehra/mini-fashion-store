@@ -28,7 +28,16 @@
     align-items: flex-start;
 }
 
+.hero-content h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 52px;
+  letter-spacing: 1px;
+  line-height: 1.2;
+}
+
 .hero-eyebrow {
+    font-family: sans-serif;
     font-size: 13px;
     letter-spacing: 4px;
     text-transform: uppercase;
@@ -46,10 +55,12 @@
 }
 
 .hero-sub {
-    font-size: 16px;
-    color: #444444;
-    margin-bottom: 32px;
-    line-height: 1.6;
+  font-size: 16px;
+  color: #444444;
+  margin-bottom: 32px;
+  line-height: 1.6;
+  font-family: sans-serif;
+  font-weight: 300;
 }
 
 .cta-button {

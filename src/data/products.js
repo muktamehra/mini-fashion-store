@@ -1,8 +1,8 @@
 const products = [
   // Dresses
   { id: 1, name: "Floral Midi Dress", price: 65, category: "dresses", image: "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=600&q=80" },
-  { id: 2, name: "Black Evening Dress", price: 95, category: "dresses", image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=600&q=80" },
-  { id: 3, name: "Summer Wrap Dress", price: 55, category: "dresses", image: "https://images.unsplash.com/photo-1612336307429-8a898d10e223?w=600&q=80" },
+  { id: 2, name: "Red Evening Dress", price: 95, category: "dresses", image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=600&q=80" },
+  { id: 3, name: "Evening Wrap Dress", price: 55, category: "dresses", image: "https://images.unsplash.com/photo-1612336307429-8a898d10e223?w=600&q=80" },
 
   // T-Shirts & Tops
   { id: 4, name: "Classic White Tee", price: 25, category: "tops", image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&q=80" },

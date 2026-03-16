@@ -15,16 +15,16 @@ function App() {
   const [search, setSearch] = useState('')
   const [activeSearch, setActiveSearch] = useState('')
 
-  const addToCart = (name, price) => {
-    const existingProduct = cart.find((item) => item.name === name)
-    if (existingProduct) {
-      setCart(cart.map((item) =>
-        item.name === name ? { ...item, quantity: item.quantity + 1 } : item
-      ))
-    } else {
-      setCart([...cart, { name, price, quantity: 1 }])
-    }
+  const addToCart = (name, price, quantity) => {
+  const existingProduct = cart.find((item) => item.name === name)
+  if (existingProduct) {
+    setCart(cart.map((item) =>
+      item.name === name ? { ...item, quantity: item.quantity + quantity } : item
+    ))
+  } else {
+    setCart([...cart, { name, price, quantity }])
   }
+}
 
   const removeFromCart = (name) => {
     const existingProduct = cart.find((item) => item.name === name)
@@ -36,6 +36,8 @@ function App() {
       ))
     }
   }
+
+  const resetSearch = () => { setSearch(''); setActiveSearch('') } 
 
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0)
 
@@ -68,9 +70,11 @@ function App() {
         setSearch={setSearch}
         setActiveSearch={setActiveSearch}
         removeFromCart={removeFromCart}
+        resetSearch={resetSearch}
       />
-      <Hero />
-
+      {!activeSearch && <Hero /> }
+      
+      {!activeSearch && (
       <div className='filters'>
   <button className={filter === 'all' ? 'active' : ''} onClick={() => { setFilter('all'); setSearch(''); setActiveSearch('')  }}>All</button>
   <button className={filter === 'dresses' ? 'active' : ''} onClick={() => { setFilter('dresses'); setSearch(''); setActiveSearch('')  }}>Dresses</button>
@@ -79,14 +83,24 @@ function App() {
   <button className={filter === 'bags' ? 'active' : ''} onClick={() => { setFilter('bags'); setSearch(''); setActiveSearch('')  }}>Bags & Purses</button>
   <button className={filter === 'pants' ? 'active' : ''} onClick={() => { setFilter('pants'); setSearch(''); setActiveSearch('')  }}>Pants & Jeans</button>
 </div>
+      )}
 
+    {!activeSearch && (
       <div className='sort'>
         <button className={sort === 'default' ? 'active' : ''} onClick={() => setSort('default')}>Default</button>
         <button className={sort === 'low' ? 'active' : ''} onClick={() => setSort('low')}>Price Low to High</button>
         <button className={sort === 'high' ? 'active' : ''} onClick={() => setSort('high')}>Price High to Low</button>
       </div>
+    )}
 
-      <div className="cards">
+        {activeSearch && (
+      <div className='search-results-bar'>
+        <button onClick={() => { setSearch(''); setActiveSearch('') }}>← Back</button>
+        <p>Showing results for "<strong>{activeSearch}</strong>"</p>
+      </div>
+    )}
+     
+     <div className="cards">
         {sortedProducts.map((product) => (
           <ProductCard
             key={product.id}
@@ -97,6 +111,7 @@ function App() {
           />
         ))}
       </div>
+
       <Footer />
     </div>
   )

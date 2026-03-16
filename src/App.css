@@ -130,3 +130,29 @@
 .search input:focus {
   border-color: #333;
 }
+
+.search-results-bar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 32px 0;
+}
+
+.search-results-bar button {
+  background: none;
+  border: 1px solid #333;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+.search-results-bar button:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+.search-results-bar p {
+  color: #333;
+  font-size: 15px;
+}

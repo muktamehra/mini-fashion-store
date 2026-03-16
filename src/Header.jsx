@@ -1,7 +1,7 @@
 import './Header.css'
 import { useEffect, useRef } from 'react'
 
-function Header({ cartTotal, total, cart, cartOpen, setCartOpen, search, setSearch, setActiveSearch, removeFromCart }) {
+function Header({ cartTotal, total, cart, cartOpen, setCartOpen, search, setSearch, setActiveSearch, removeFromCart, resetSearch }) {
   const cartRef = useRef(null)
 
   useEffect(() => {
@@ -20,7 +20,7 @@ function Header({ cartTotal, total, cart, cartOpen, setCartOpen, search, setSear
     <header>
       <h1>Fashion Mania</h1>
       <nav>
-        <a href="#">Home</a>
+        <a href="#" onClick={resetSearch}>Home</a>
         <a href="#">About</a>
         <a href="#">Contact</a>
       </nav>

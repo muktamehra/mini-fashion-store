@@ -17,11 +17,7 @@ function ProductCard ({name, price, image, addToCart }) {
             return <option key={num} value={num}>{num}</option>
           })}
         </select>
-        <button onClick={() => {
-          for(let i = 0; i < quantity; i++) {
-            addToCart(name, price)
-          }
-        }}>Add to Cart</button>
+        <button onClick={() => addToCart(name, price, quantity)}>Add to Cart</button>
       </div>
     </div>
   )
