@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Header from './Header'
 import Hero from './Hero'
 import ProductCard from './ProductCard'
@@ -8,12 +8,19 @@ import './App.css'
 import products from './data/products'
 
 function App() {
-  const [cart, setCart] = useState([])
+  const [cart, setCart] = useState(() => {
+    const saved = localStorage.getItem('cart')
+    return saved ? JSON.parse(saved) : []
+  })
   const [filter, setFilter] = useState('all')
   const [sort, setSort] = useState('default')
   const [cartOpen, setCartOpen] = useState(false)
   const [search, setSearch] = useState('')
   const [activeSearch, setActiveSearch] = useState('')
+
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart))
+  }, [cart])
 
   const addToCart = (name, price, quantity) => {
   const existingProduct = cart.find((item) => item.name === name)
