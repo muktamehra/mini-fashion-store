@@ -18,7 +18,7 @@ function Header({ cartTotal, total, cart, cartOpen, setCartOpen, search, setSear
 
   return (
     <header>
-      <h1>Mini Fashion Store</h1>
+      <h1>Fashion Mania</h1>
       <nav>
         <a href="#" onClick={resetSearch}>Home</a>
         <a href="#">About</a>
