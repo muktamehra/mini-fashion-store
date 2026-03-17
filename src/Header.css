@@ -95,6 +95,24 @@ header span {
   color: #333333;
 }
 
+.clear-cart {
+  width: 100%;
+  margin-top: 12px;
+  padding: 8px;
+  background-color: #fff;
+  color: #333;
+  border: 1px solid #333;
+  cursor: pointer;
+  font-size: 13px;
+  letter-spacing: 1px;
+  transition: all 0.3s;
+}
+
+.clear-cart:hover {
+  background-color: #333;
+  color: #fff;
+}
+
 header input {
   padding: 8px 15px;
   border: none;

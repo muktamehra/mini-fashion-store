@@ -37,6 +37,8 @@ function App() {
     }
   }
 
+  const clearCart = () => setCart([])
+
   const resetSearch = () => { setSearch(''); setActiveSearch('') } 
 
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0)
@@ -71,25 +73,26 @@ function App() {
         setActiveSearch={setActiveSearch}
         removeFromCart={removeFromCart}
         resetSearch={resetSearch}
+        clearCart={clearCart}
       />
       {!activeSearch && <Hero /> }
       
       {!activeSearch && (
       <div className='filters'>
-  <button className={filter === 'all' ? 'active' : ''} onClick={() => { setFilter('all'); setSearch(''); setActiveSearch('')  }}>All</button>
-  <button className={filter === 'dresses' ? 'active' : ''} onClick={() => { setFilter('dresses'); setSearch(''); setActiveSearch('')  }}>Dresses</button>
-  <button className={filter === 'tops' ? 'active' : ''} onClick={() => { setFilter('tops'); setSearch(''); setActiveSearch('')  }}>Tops</button>
-  <button className={filter === 'jackets' ? 'active' : ''} onClick={() => { setFilter('jackets'); setSearch(''); setActiveSearch('')  }}>Jackets & Coats</button>
-  <button className={filter === 'bags' ? 'active' : ''} onClick={() => { setFilter('bags'); setSearch(''); setActiveSearch('')  }}>Bags & Purses</button>
-  <button className={filter === 'pants' ? 'active' : ''} onClick={() => { setFilter('pants'); setSearch(''); setActiveSearch('')  }}>Pants & Jeans</button>
+  <button type="button" className={filter === 'all' ? 'active' : ''} onClick={() => { setFilter('all'); setSearch(''); setActiveSearch('')  }}>All</button>
+  <button type="button" className={filter === 'dresses' ? 'active' : ''} onClick={() => { setFilter('dresses'); setSearch(''); setActiveSearch('')  }}>Dresses</button>
+  <button type="button" className={filter === 'tops' ? 'active' : ''} onClick={() => { setFilter('tops'); setSearch(''); setActiveSearch('')  }}>Tops</button>
+  <button type="button" className={filter === 'jackets' ? 'active' : ''} onClick={() => { setFilter('jackets'); setSearch(''); setActiveSearch('')  }}>Jackets & Coats</button>
+  <button type="button" className={filter === 'bags' ? 'active' : ''} onClick={() => { setFilter('bags'); setSearch(''); setActiveSearch('')  }}>Bags & Purses</button>
+  <button type="button" className={filter === 'pants' ? 'active' : ''} onClick={() => { setFilter('pants'); setSearch(''); setActiveSearch('')  }}>Pants & Jeans</button>
 </div>
       )}
 
     {!activeSearch && (
       <div className='sort'>
-        <button className={sort === 'default' ? 'active' : ''} onClick={() => setSort('default')}>Default</button>
-        <button className={sort === 'low' ? 'active' : ''} onClick={() => setSort('low')}>Price Low to High</button>
-        <button className={sort === 'high' ? 'active' : ''} onClick={() => setSort('high')}>Price High to Low</button>
+        <button type="button" className={sort === 'default' ? 'active' : ''} onClick={() => setSort('default')}>Default</button>
+        <button type="button" className={sort === 'low' ? 'active' : ''} onClick={() => setSort('low')}>Price Low to High</button>
+        <button type="button" className={sort === 'high' ? 'active' : ''} onClick={() => setSort('high')}>Price High to Low</button>
       </div>
     )}
 
@@ -111,6 +114,12 @@ function App() {
           />
         ))}
       </div>
+
+      {sortedProducts.length === 0 && (
+  <p style={{ textAlign: 'center', marginTop: '40px', color: '#777' }}>
+    No products found.
+  </p>
+)}
 
       <Footer />
     </div>
