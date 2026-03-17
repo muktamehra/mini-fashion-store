@@ -3,6 +3,7 @@ import './ProductCard.css'
 
 function ProductCard ({name, price, image, addToCart }) {
   const [quantity, setQuantity] = useState(1)
+  const [added, setAdded] = useState(false)
 
   return (
     <div className="card">
@@ -17,7 +18,13 @@ function ProductCard ({name, price, image, addToCart }) {
             return <option key={num} value={num}>{num}</option>
           })}
         </select>
-        <button type="button" onClick={() => addToCart(name, price, quantity)}>Add to Cart</button>
+        <button type="button" onClick={() => {
+  addToCart(name, price, quantity)
+  setAdded(true)
+  setTimeout(() => setAdded(false), 1500)
+}}>
+  {added ? '✓ Added!' : 'Add to Cart'}
+</button>
       </div>
     </div>
   )

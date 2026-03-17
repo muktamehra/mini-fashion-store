@@ -51,6 +51,11 @@
   background-color: #000000;
 }
 
+.card button.added {
+  background-color: #4caf50;
+  color: #ffffff;
+}
+
 .cards {
   display: flex;
   gap: 24px;
