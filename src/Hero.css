@@ -15,7 +15,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(to right, rgba(255,255,255,0.55) 25%, rgba(255,255,255,0.0) 55%);
+    background: linear-gradient(to right, rgba(255,255,255,0.5) 35%, rgba(255,255,255,0.0) 55%);
 }
 
 .hero-content {
